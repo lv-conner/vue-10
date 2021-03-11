@@ -10,7 +10,7 @@
   "dependencies": {
     "ant-design-vue": "^1.7.4",
     "axios": "^0.21.1",
-    "core-js": "^3.6.5",
+    "core-js": "^3.9.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -35,8 +35,8 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-debugger":"off",
-      "no-unused-vars":"off"
+      "no-debugger": "off",
+      "no-unused-vars": "off"
     }
   },
   "browserslist": [

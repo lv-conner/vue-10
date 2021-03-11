@@ -1,6 +1,7 @@
 <template>
     <div>
-        <a-button @click="addUser" type="primart">Click</a-button>
+        <a-button @click="addUser" type="primary">Click</a-button>
+        <a-button @click="changeUser" type="primary">change</a-button>
         <div class="user-list">
             <div class="user-item" v-for="user in users" :key="user.id">
                 {{ user.name }}
@@ -31,6 +32,11 @@
                     name:"name" + id
                 };
                 this.users.push(user);
+            },
+            changeUser(e){a
+                var a = this.users[0];
+                a.name = "tim lv" + Math.random();
+                a.id = 18010106
             }
         }
     }
