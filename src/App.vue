@@ -38,7 +38,7 @@
                     </a-sub-menu>
                 </a-menu>
             </div>
-            <div class="component-wrapper">
+            <div id="component" class="component-wrapper">
                 <!-- <label>文本</label>
                 <a-input v-model="unprotect" type="text">
                     <a-icon slot="prefix" type="user" />
@@ -47,13 +47,11 @@
                 <label>加密后数据：</label>
                 <a-textarea disabled v-model="protect" placeholder="Basic usage" :rows="4" />
                 <a-button @click="btnCheckClick" type="primary">解密验证</a-button> -->
-                <div>
-                    <a-tabs hideAdd default-active-key="1" type="editable-card" @change="callback">
-                        <a-tab-pane v-for="tab in tabs" :key="tab.key" :tab="tab.title"  >
-                            <component :is="tab.component" v-bind="tab.props" />
-                        </a-tab-pane>
-                     </a-tabs>
-                </div>
+                <a-tabs hideAdd default-active-key="1" type="editable-card" @change="callback">
+                    <a-tab-pane v-for="tab in tabs" :key="tab.key" :tab="tab.title"  >
+                        <component :is="tab.component" v-bind="tab.props" />
+                    </a-tab-pane>
+                </a-tabs>
             </div>
         </div>
     </div>
@@ -63,10 +61,12 @@
     import axios from "axios";
     import HelloWorld from "./components/HelloWorld.vue";
     import ToDo from "./components/ToDo.vue";
+    import UserList from "./components/UserList.vue";
     export default {
         name: 'App',
         components: {
             HelloWorld,
+            UserList,
             ToDo
         },
         data() {
@@ -83,6 +83,14 @@
                     key: "2",
                     title: "代办列表信息",
                     component: "ToDo",
+                    props: {
+                        message: "to do msg",
+                        items:["1","2"]
+                    }
+                },{
+                    key: "3",
+                    title: "用户列表",
+                    component: "UserList",
                     props: {
                         message: "to do msg",
                         items:["1","2"]
@@ -178,7 +186,7 @@
         box-sizing: content-box;
         padding: 8px 16px;
         line-height: 32px;
-        border-bottom: 1px solid whitesmoke;
+        border-bottom: 4px solid #2c3e50;
         display: flex;
     }
 
@@ -206,5 +214,21 @@
         color: #03a9f4;
         font-size: 1rem;
         padding-left: 8px;
+    }
+    .component-wrapper .ant-tabs-tab{
+        color: #2196f3;
+        background-color: #03a9f4;
+    }
+    #component {
+        width: 100%;
+    }
+    #component .ant-tabs-tab{
+        color: #2c3e50;
+        background-color: whitesmoke;
+
+    }
+    #component .ant-tabs-tab-active.ant-tabs-tab{
+        color: whitesmoke;
+        background-color: #2c3e50;
     }
 </style>
