@@ -77,7 +77,10 @@
                     title: "文件管理",
                     component: "HelloWorld",
                     props: {
-                        msg: "哈哈哈哈哈哈"
+                        msg: "哈哈哈哈哈哈",
+                        changeMessage:function(e){
+                            console.log(e);
+                        }
                     }
                 },{
                     key: "2",
