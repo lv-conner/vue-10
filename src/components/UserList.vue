@@ -7,10 +7,55 @@
                 {{ user.name }}
             </div>  
         </div>
+        <div>
+            <a-table size="small" :columns="columns" :data-source="data" bordered>
+                <template slot="name" slot-scope="text">
+                  <a>{{ text }}</a>
+                </template>
+
+              </a-table>
+        </div>
     </div>
 </template>
 
 <script>
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            scopedSlots: { customRender: 'name' },
+        },
+        {
+            title: 'Cash Assets',
+            className: 'column-money',
+            dataIndex: 'money',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+        },
+    ];
+
+    const data = [
+        {
+            key: '1',
+            name: 'John Brown',
+            money: '￥300,000.00',
+            address: 'New York No. 1 Lake Park',
+        },
+        {
+            key: '2',
+            name: 'Jim Green',
+            money: '￥1,256,000.00',
+            address: 'London No. 1 Lake Park',
+        },
+        {
+            key: '3',
+            name: 'Joe Black',
+            money: '￥120,000.00',
+            address: 'Sidney No. 1 Lake Park',
+        },
+    ];
     export default {
         name:"UserList",
         props:{
@@ -21,7 +66,10 @@
                 users:[{
                     id:"18010105",
                     name:"吕明鸿"
-                }]
+                }],
+                data,
+                columns
+                
             }
         },
         methods:{

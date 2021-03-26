@@ -51,6 +51,17 @@
                     <a-tab-pane v-for="tab in tabs" :key="tab.key" :tab="tab.title"  >
                         <component :is="tab.component" v-bind="tab.props" />
                     </a-tab-pane>
+                    <a-tab-pane key="5" tab="GG" >
+                        <SlotComponents>
+                            <label>Ha hahah </label>
+                            <template v-slot:first>
+                                GGGGG
+                            </template>
+                            <span slot="second">
+                                sdaflasdjfla
+                            </span>
+                        </SlotComponents>
+                    </a-tab-pane>
                 </a-tabs>
             </div>
         </div>
@@ -62,12 +73,14 @@
     import HelloWorld from "./components/HelloWorld.vue";
     import ToDo from "./components/ToDo.vue";
     import UserList from "./components/UserList.vue";
+    import SlotComponents from '@/components/SlotComponents.vue';
     export default {
         name: 'App',
         components: {
             HelloWorld,
             UserList,
-            ToDo
+            ToDo,
+            SlotComponents
         },
         data() {
             return {
@@ -97,6 +110,12 @@
                     props: {
                         message: "to do msg",
                         items:["1","2"]
+                    }
+                },{
+                    key: "4",
+                    title: "Slot",
+                    component: "SlotComponents",
+                    props: {
                     }
                 }],
                 message: "Hello this is first vue app!",
