@@ -81,10 +81,16 @@
                 };
                 this.users.push(user);
             },
-            changeUser(e){a
-                var a = this.users[0];
-                a.name = "tim lv" + Math.random();
-                a.id = 18010106
+            changeUser(e){
+                var changeUser = {
+                    id:"18010106",
+                    name:"吕明鸿GG"
+                }
+                this.$set(this.users, 0, changeUser)
+                return;
+                // var a = this.users[0];
+                // a.name = "tim lv" + Math.random();
+                // a.id = 18010106
             }
         }
     }

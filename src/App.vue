@@ -12,7 +12,7 @@
         </div>
         <div class="app-content">
             <div class="app-menu">
-                <a-menu class="menu-nomal" :default-selected-keys="['1']" :inline-collapsed="collapsed"
+                <a-menu class="menu-nomal"  :default-selected-keys="['1']" :inline-collapsed="collapsed"
                     :open-keys.sync="openKeys" mode="inline" @click="handleClick">
                     <a-sub-menu key="sub1" @titleClick="titleClick">
                         <span slot="title">
@@ -47,7 +47,7 @@
                 <label>加密后数据：</label>
                 <a-textarea disabled v-model="protect" placeholder="Basic usage" :rows="4" />
                 <a-button @click="btnCheckClick" type="primary">解密验证</a-button> -->
-                <a-tabs hideAdd default-active-key="1" type="editable-card" @change="callback">
+                <a-tabs :activeKey="activeKey" hideAdd default-active-key="1" type="editable-card" @change="callback">
                     <a-tab-pane v-for="tab in tabs" :key="tab.key" :tab="tab.title"  >
                         <component :is="tab.component" v-bind="tab.props" />
                     </a-tab-pane>
@@ -85,6 +85,7 @@
         data() {
             return {
                 data: ["1", "2", "3", "4", "5", "6"],
+                activeKey:"2",
                 tabs: [{
                     key: "1",
                     title: "文件管理",
@@ -175,8 +176,8 @@
             toggleCollapsed() {
                 this.collapsed = !this.collapsed;
             },
-            callback(e) {
-                console.log(e)
+            callback(key) {
+                this.activeKey = key;
             },
             returnValue() {
                 return "value";
